@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Visual.Aerolinea;
+package Visual_Aeropuerto;
 
+import Visual.Aerolinea.Panel_Datos_Aerolinea;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -16,36 +17,35 @@ import java.util.List;
  *
  * @author MEDAC
  */
-public class BLanco extends javax.swing.JPanel {
-
+public class Panel_Muestra_Datos_Aeropuerto extends javax.swing.JPanel {
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     private static final String URL_CONEXION = "jdbc:mysql://localhost:3306/mydb";
     private static final String USUARIO = "root";
     private static final String PASSWORD = "1234";
-
     /**
-     * Creates new form BLanco
+     * Creates new form Panel_Muestra_Datos
      */
-    public BLanco() {
+    public Panel_Muestra_Datos_Aeropuerto() {
         initComponents();
         mostrarDatosAerolinea();
+        
     }
-
-    private void mostrarDatosAerolinea() {
+     private void mostrarDatosAerolinea() {
         try {
             Class.forName(DRIVER);
             Connection conn = DriverManager.getConnection(URL_CONEXION, USUARIO, PASSWORD);
             Statement stmt = conn.createStatement();
-            String sql = "SELECT * FROM aerolinea";
+            String sql = "SELECT * FROM aeropuerto";
             ResultSet rs = stmt.executeQuery(sql);
-            List listaComponentes = new ArrayList<Panel_Datos_Aerolinea>();
 
             // Si hay registros, mostramos el primero
             while (rs.next()) {
 
-                int id = rs.getInt("id_aerolinea");
+                int id = rs.getInt("id_aeropuerto");
                 String nom = rs.getString("nombre");
-                String pais = rs.getString("pais_origen");
+                String ciudad = rs.getString("ciudad");
+                String pais = rs.getString("pais");
+                String num = rs.getString("numero_pistas");
 
                 Panel_Datos_Aerolinea panel = new Panel_Datos_Aerolinea();
                 panel.getLblId().setText(String.valueOf(id));
@@ -64,7 +64,6 @@ public class BLanco extends javax.swing.JPanel {
             System.out.println("Error al conectar con la base de datos: " + e.getMessage());
         }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -74,7 +73,16 @@ public class BLanco extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
 
