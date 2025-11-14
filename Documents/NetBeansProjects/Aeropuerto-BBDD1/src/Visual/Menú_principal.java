@@ -4,7 +4,8 @@
  */
 package Visual;
 
-import Visual.Aerolinea.Aerolinea;
+import Visual.Aerolinea.Frame_Aerolinea;
+import Visual_Aeropuerto.Frame_Aeropuerto;
 
 /**
  *
@@ -19,6 +20,7 @@ public class Menú_principal extends javax.swing.JFrame {
      */
     public Menú_principal() {
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
@@ -112,6 +114,11 @@ public class Menú_principal extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton2.setText("Aeropuerto");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -253,9 +260,14 @@ public class Menú_principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Aerolinea a= new Aerolinea();
-        a.setVisible(true);
+        Frame_Aerolinea aerolinea= new Frame_Aerolinea();
+        aerolinea.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Frame_Aeropuerto aeropuerto = new Frame_Aeropuerto();
+        aeropuerto.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
